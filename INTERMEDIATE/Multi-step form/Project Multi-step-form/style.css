@@ -1,0 +1,129 @@
+*{
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+
+:root{
+    /* Primary colors */
+    --Marine-blue:hsl(213, 96%, 18%);
+    --Purplish-blue: hsl(243, 100%, 62%);
+    --Pastel-blue: hsl(228, 100%, 84%);
+    --Light-blue: hsl(206, 94%, 87%);
+    --Strawberry-red: hsl(354, 84%, 57%);
+    /* Neutral Colors */
+    --Cool-gray: hsl(231, 11%, 63%);
+    --Light-gray: hsl(229, 24%, 87%);
+    --Magnolia: hsl(217, 100%, 97%);
+    --Alabaster: hsl(231, 100%, 99%);
+    --White: hsl(0, 0%, 100%);
+}
+
+body{
+    font-family: 'Ubuntu', sans-serif;
+    background-color: var(--Light-blue);
+}
+
+.main-block{
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+}
+
+.main-block__button{
+    position: relative;
+    width: 100%;
+    height: 147px;
+    background-image: url(/assets/images/bg-sidebar-mobile.svg);
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: top;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+}
+.main-block__divBoton{
+    width: 40%;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+}
+.buttonContent{
+    display: flex;
+    flex-direction: row;
+}
+.buttonContent__button{
+    width: 2rem;
+    height: 2rem;
+    border-radius: 20px;
+    margin: 0.5rem;
+    margin-top: 2rem;
+    border: 1px solid var(--White);
+    background-color: transparent;
+    color: var(--White);
+    font-weight: 700;
+}
+
+.--active{
+    color: black;
+    background-color: var(--Light-blue);
+    border: 1px solid var(--Light-blue);
+}
+
+.buttonContent__info{
+    display: none;
+}
+
+.main-block__contenido{
+    width: 100%;
+    display: flex;
+    justify-content: center;
+}
+
+.stageContent{
+    position: relative;
+    width: 100%;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.stageContent__contenido{
+    position: absolute;
+    top: -4rem;
+    width: 85%;
+    min-height: 65%;
+    background-color: white;
+    border-radius: 10px;
+}
+.stageContent__botones{
+    width: 100%;
+    height: 12%;
+    position: fixed;
+    left: 0;
+    bottom: 0;
+    background-color: white;
+    padding: 0px 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.stageContent__botones button{
+    height: 40px;
+    padding: 0 15px;
+    border-radius: 5px;
+    border: none;
+    font-weight: bold;
+}
+
+.--right-button{
+    color: var(--White);
+    background-color: var(--Marine-blue);
+}
+
+.--left-button{
+    color: var(--Cool-gray);
+    background-color: var(--White);
+}
