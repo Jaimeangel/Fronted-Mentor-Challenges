@@ -75,12 +75,22 @@ class StageForm{
             }
         })
     }
-    changeSteps(){
-        console.log('click')
-        console.log(this.currentStep)
-        this.currentStep+=1
-        console.log(this.currentStep)
-        this.activeButton()
+    nextButtonFunction(){
+        if(this.currentStep<4){
+            this.currentStep+=1
+            this.activeButton()
+        }else{
+            this.currentStep=5
+        }
+
+    }
+    backButtonFunction(){
+        if(this.currentStep<=4){
+            this.currentStep-=1
+            console.log(this.currentStep)
+            this.activeButton()
+        }
+
     }
     loadStructureContent(){
         const divContent=document.createElement('div')
@@ -114,10 +124,18 @@ const stageForm = new StageForm({
 })
 
 stageForm.startStageForm()
-function click(){
-    stageForm.changeSteps()
+
+function rightClick(){
+    stageForm.nextButtonFunction()
 }
+
+function leftClick(){
+    stageForm.backButtonFunction()
+}
+
 const rightButton=document.querySelector('.--right-button')
-rightButton.addEventListener('click',click)
+const leftButton=document.querySelector('.--left-button')
+rightButton.addEventListener('click',rightClick)
+leftButton.addEventListener('click',leftClick)
 
 
