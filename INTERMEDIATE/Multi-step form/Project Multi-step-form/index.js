@@ -33,8 +33,8 @@ class StageForm{
     }
     startStageForm(){
         this.loadButtons()
-        this.activeButton()
         this.loadStructureContent()
+        this.activeButton()
     }
     loadButtons(){
         const divBotones=document.createElement('div')
@@ -74,6 +74,19 @@ class StageForm{
                 }
             }
         })
+
+        const leftButton=document.querySelector('.--left-button')
+        const buttonsDiv=document.querySelector('.stageContent__botones')
+
+        if(this.currentStep!==1){
+            leftButton.classList.add('show')
+        }else{
+            leftButton.classList.remove('show')
+        }
+        if(this.currentStep===5){
+            buttonsDiv.classList.add('none')
+        }
+        
     }
     nextButtonFunction(){
         if(this.currentStep<4){
@@ -81,13 +94,13 @@ class StageForm{
             this.activeButton()
         }else{
             this.currentStep=5
+            this.activeButton()
         }
 
     }
     backButtonFunction(){
         if(this.currentStep<=4){
             this.currentStep-=1
-            console.log(this.currentStep)
             this.activeButton()
         }
 

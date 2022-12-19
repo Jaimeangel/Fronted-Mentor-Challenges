@@ -124,6 +124,17 @@ body{
 }
 
 .--left-button{
+    visibility: hidden;
     color: var(--Cool-gray);
     background-color: var(--White);
+}
+.hide{
+    visibility: hidden;
+}
+.show{
+    visibility: visible
+}
+
+.none{
+    display: none;
 }
