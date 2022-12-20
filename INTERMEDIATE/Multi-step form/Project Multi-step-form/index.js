@@ -86,6 +86,7 @@ class StageForm{
         if(this.currentStep===5){
             buttonsDiv.classList.add('none')
         }
+        this.contentStage()
         
     }
     nextButtonFunction(){
@@ -127,6 +128,51 @@ class StageForm{
 
         divContent.append(content,botones)
         this.nodoContent.appendChild(divContent)
+    }
+    clear(){
+        const divContent=document.querySelector('.stageContent__contenido')
+        divContent.innerHTML=''
+    }
+    contentStage(){
+        this.clear()
+        switch(this.currentStep){
+            case 1:
+                this.stage1()
+                break
+        }
+    }
+
+    stage1(){
+        const divContent=document.createElement('div')
+        divContent.classList.add('stage1')
+
+        const divTitle=document.createElement('div')
+        divTitle.classList.add('stage1__title')
+        const h2=document.createElement('h2')
+        h2.textContent='Personal info'
+        const p=document.createElement('p')
+        p.textContent='Please provide your name,email,address, and phone number'
+        divTitle.append(h2,p)
+
+        const divForm=document.createElement('div')
+        divForm.classList.add('stage1__form')
+
+        const label1=document.createElement('label')
+        label1.textContent='Name'
+        const input1=document.createElement('input')
+
+        const label2=document.createElement('label')
+        label2.textContent='Email Address'
+        const input2=document.createElement('input')
+
+        const label3=document.createElement('label')
+        label3.textContent='Phone Number'
+        const input3=document.createElement('input')
+        divForm.append(label1,input1,label2,input2,label3,input3)
+
+
+        divContent.append(divTitle,divForm)
+        document.querySelector('.stageContent__contenido').appendChild(divContent)
     }
 }
 
