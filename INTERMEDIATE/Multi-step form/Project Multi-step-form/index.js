@@ -30,6 +30,21 @@ class StageForm{
         this.stageButton=buttons;
         this.nodoButtons=nodoButtons;
         this.nodoContent=nodoContent;
+        this.data={
+            periodo:{
+                mo:{
+                    acronym:'mo',
+                    name:'monthly'
+                },
+                yr:{
+                    acronym:'yr',
+                    name:'annually'
+                }
+            },
+            plan_data:{
+                type_period:'mo'
+            }
+        };
     }
     startStageForm(){
         this.loadButtons()
@@ -139,15 +154,18 @@ class StageForm{
             case 1:
                 this.stage1()
                 break
+            case 2:
+                this.stage2()
+                break
         }
     }
 
     stage1(){
         const divContent=document.createElement('div')
-        divContent.classList.add('stage1')
+        divContent.classList.add('stage')
 
         const divTitle=document.createElement('div')
-        divTitle.classList.add('stage1__title')
+        divTitle.classList.add('title')
         const h2=document.createElement('h2')
         h2.textContent='Personal info'
         const p=document.createElement('p')
@@ -172,6 +190,56 @@ class StageForm{
 
 
         divContent.append(divTitle,divForm)
+        document.querySelector('.stageContent__contenido').appendChild(divContent)
+    }
+    stage2(){
+        const type_plan=[['arcade',9,'icon-arcade.svg'],['advanced',12,'icon-advanced.svg'],['pro',15,'icon-pro.svg']]
+
+        const divContent=document.createElement('div')
+        divContent.classList.add('stage')
+
+        const divTitle=document.createElement('div')
+        divTitle.classList.add('title')
+        const h2=document.createElement('h2')
+        h2.textContent='Select your plan'
+        const p=document.createElement('p')
+        p.textContent='You have the option of monthly or yearly billing.'
+        divTitle.append(h2,p)
+
+        const divPlan=document.createElement('div')
+        divPlan.classList.add('stage')
+
+        type_plan.map(plan=>{
+            const divPlanContent=document.createElement('div')
+            divPlanContent.classList.add('stage2Card')
+
+            const imgPlan=document.createElement('img')
+            imgPlan.setAttribute('src',`/assets/images/${plan[2]}`)
+
+            const infoPlan=document.createElement('div')
+            infoPlan.classList.add('stage2Card__info')
+            const namePlan=document.createElement('p')
+            namePlan.textContent=`${plan[0].charAt(0).toUpperCase() + plan[0].slice(1)}`
+            const pricePlan=document.createElement('div')
+            infoPlan.append(namePlan,pricePlan)
+
+            divPlanContent.append(imgPlan,infoPlan)
+            divPlan.append(divPlanContent)
+        })
+
+        const divButon=document.createElement('div')
+        const buttonLabel=document.createElement('label')
+        buttonLabel.classList.add('switch')
+        const inputLabel=document.createElement('input')
+        inputLabel.setAttribute('type','checkbox')
+        const spanLabel=document.createElement('span')
+        spanLabel.classList.add('slider')
+        spanLabel.classList.add('round')
+        buttonLabel.append(inputLabel,spanLabel)
+        divButon.append(buttonLabel)
+      
+
+        divContent.append(divTitle,divPlan,divButon)
         document.querySelector('.stageContent__contenido').appendChild(divContent)
     }
 }
