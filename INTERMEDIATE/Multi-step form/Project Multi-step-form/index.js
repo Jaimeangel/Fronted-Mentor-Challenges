@@ -1,50 +1,54 @@
-const button_stage=[
-    {
-        step:1,
-        text:"your info"
-    },
-    {
-        step:2,
-        text:"select plan"
-    },
-    {
-        step:3,
-        text:"add-ons"
-    },
-    {
-        step:4,
-        text:"summary"
-    }
-]
-
 const divContent=document.querySelector(".main-block__contenido")
 const divButtons=document.querySelector(".main-block__button")
 
 class StageForm{
     constructor({
-        buttons,
         nodoButtons,
         nodoContent
     }){
         this.currentStep=1;
-        this.stageButton=buttons;
-        this.nodoButtons=nodoButtons;
-        this.nodoContent=nodoContent;
-        this.data={
+        this.stageButton=[
+            {
+                step:1,
+                text:"your info"
+            },
+            {
+                step:2,
+                text:"select plan"
+            },
+            {
+                step:3,
+                text:"add-ons"
+            },
+            {
+                step:4,
+                text:"summary"
+            }
+        ];
+        this.plan_type={
             periodo:{
-                'mo':{
+                mo:{
                     acronym:'mo',
                     name:'monthly'
                 },
-                'yr':{
+                yr:{
                     acronym:'yr',
                     name:'annually'
                 }
             },
-            plan_data:{
-                type_period:'mo'
-            }
+            type_plan:[
+                ['arcade',9,'icon-arcade.svg'],
+                ['advanced',12,'icon-advanced.svg'],
+                ['pro',15,'icon-pro.svg']
+            ]
         };
+        this.info_user={
+            name_user:'',
+            email_user:'',
+            phone_user:''
+        };
+        this.nodoButtons=nodoButtons;
+        this.nodoContent=nodoContent;
     }
     startStageForm(){
         this.loadButtons()
@@ -178,6 +182,7 @@ class StageForm{
         const label1=document.createElement('label')
         label1.textContent='Name'
         const input1=document.createElement('input')
+        input1.value=this.info_user.name_user
 
         const label2=document.createElement('label')
         label2.textContent='Email Address'
@@ -193,8 +198,6 @@ class StageForm{
         document.querySelector('.stageContent__contenido').appendChild(divContent)
     }
     stage2(){
-        const type_plan=[['arcade',9,'icon-arcade.svg'],['advanced',12,'icon-advanced.svg'],['pro',15,'icon-pro.svg']]
-
         const divContent=document.createElement('div')
         divContent.classList.add('stage')
 
@@ -209,7 +212,7 @@ class StageForm{
         const divPlan=document.createElement('div')
         divPlan.classList.add('stage')
 
-        type_plan.map(plan=>{
+        this.plan_type.type_plan.map(plan=>{
             const divPlanContent=document.createElement('div')
             divPlanContent.classList.add('stage2Card')
 
@@ -230,10 +233,10 @@ class StageForm{
         const divButon=document.createElement('div')
         divButon.classList.add('buttonPlan')
         const pMonthly=document.createElement('p')
-        const monthlyName=this.data.periodo.mo.name
+        const monthlyName=this.plan_type.periodo.mo.name
         pMonthly.textContent=`${monthlyName.charAt(0).toUpperCase() + monthlyName.slice(1)}`
         const pYearly=document.createElement('p')
-        const yearlyName=this.data.periodo.yr.name
+        const yearlyName=this.plan_type.periodo.yr.name
         pYearly.textContent=`${yearlyName.charAt(0).toUpperCase() + yearlyName.slice(1)}`
         const buttonLabel=document.createElement('label')
         buttonLabel.classList.add('switch')
@@ -252,7 +255,6 @@ class StageForm{
 }
 
 const stageForm = new StageForm({
-    buttons:button_stage,
     nodoButtons:divButtons,
     nodoContent:divContent
 })
