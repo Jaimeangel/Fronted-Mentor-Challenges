@@ -32,11 +32,11 @@ class StageForm{
         this.nodoContent=nodoContent;
         this.data={
             periodo:{
-                mo:{
+                'mo':{
                     acronym:'mo',
                     name:'monthly'
                 },
-                yr:{
+                'yr':{
                     acronym:'yr',
                     name:'annually'
                 }
@@ -228,6 +228,13 @@ class StageForm{
         })
 
         const divButon=document.createElement('div')
+        divButon.classList.add('buttonPlan')
+        const pMonthly=document.createElement('p')
+        const monthlyName=this.data.periodo.mo.name
+        pMonthly.textContent=`${monthlyName.charAt(0).toUpperCase() + monthlyName.slice(1)}`
+        const pYearly=document.createElement('p')
+        const yearlyName=this.data.periodo.yr.name
+        pYearly.textContent=`${yearlyName.charAt(0).toUpperCase() + yearlyName.slice(1)}`
         const buttonLabel=document.createElement('label')
         buttonLabel.classList.add('switch')
         const inputLabel=document.createElement('input')
@@ -236,7 +243,7 @@ class StageForm{
         spanLabel.classList.add('slider')
         spanLabel.classList.add('round')
         buttonLabel.append(inputLabel,spanLabel)
-        divButon.append(buttonLabel)
+        divButon.append(pMonthly,buttonLabel,pYearly)
       
 
         divContent.append(divTitle,divPlan,divButon)

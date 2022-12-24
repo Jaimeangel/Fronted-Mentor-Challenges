@@ -97,6 +97,7 @@ body{
     background-color: white;
     border-radius: 10px;
     padding: 30px;
+    padding-bottom: 20px;
 }
 .stageContent__botones{
     width: 100%;
@@ -177,7 +178,7 @@ body{
     width: 100%;
     display: flex;
     justify-content: flex-start;
-    border: 1px solid black;
+    border: 1px solid var(--Light-gray);
     padding: 0.5rem;
     margin-bottom: 0.5rem;
     border-radius: 10px;
@@ -192,8 +193,8 @@ body{
 .switch {
     position: relative;
     display: inline-block;
-    width: 40px;
-    height: 24px;
+    width: 35px;
+    height: 20px;
   }
   
   .switch input { 
@@ -209,7 +210,7 @@ body{
     left: 0;
     right: 0;
     bottom: 0;
-    background-color: #2196F3;
+    background-color: var(--Marine-blue);
     -webkit-transition: .4s;
     transition: .4s;
   }
@@ -217,8 +218,8 @@ body{
   .slider:before {
     position: absolute;
     content: "";
-    height: 17px;
-    width: 17px;
+    height: 14px;
+    width: 14px;
     left: 3px;
     bottom: 3px;
     background-color: white;
@@ -228,13 +229,13 @@ body{
   
   
   input:focus + .slider {
-    box-shadow: 0 0 1px #2196F3;
+    box-shadow: 0 0 1px var(--Marine-blue);
   }
   
   input:checked + .slider:before {
-    -webkit-transform: translateX(26px);
-    -ms-transform: translateX(26px);
-    transform: translateX(17px);
+    -webkit-transform: translateX(15px);
+    -ms-transform: translateX(15px);
+    transform: translateX(15px);
   }
   
   /* Rounded sliders */
@@ -245,3 +246,20 @@ body{
   .slider.round:before {
     border-radius: 50%;
   }
+
+.buttonPlan{
+    width: 100%;
+    height: 2.5rem;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    background-color: var(--Alabaster);
+    border-radius: 10px;
+    padding: 0 1rem;
+}
+
+.buttonPlan p{
+    color: var(--Cool-gray);
+    font-size: 13px;
+    font-weight: bold;
+}
