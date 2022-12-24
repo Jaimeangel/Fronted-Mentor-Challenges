@@ -45,7 +45,15 @@ class StageForm{
         this.info_user={
             name_user:'',
             email_user:'',
-            phone_user:''
+            phone_user:'',
+            type_plan:'',
+            info_plan:{
+                price:'',
+                name_plan:''
+            },
+            extra_plan:{
+
+            }
         };
         this.nodoButtons=nodoButtons;
         this.nodoContent=nodoContent;
@@ -163,6 +171,19 @@ class StageForm{
                 break
         }
     }
+    changeListener(tar){
+        switch(tar.dataset.key){
+            case 'name_user':
+                this.info_user.name_user=tar.value
+                break
+            case 'email_user':
+                this.info_user.email_user=tar.value
+                break
+            case 'phone_user':
+                this.info_user.phone_user=tar.value
+                break
+        }
+    }
 
     stage1(){
         const divContent=document.createElement('div')
@@ -182,18 +203,21 @@ class StageForm{
         const label1=document.createElement('label')
         label1.textContent='Name'
         const input1=document.createElement('input')
+        input1.setAttribute("type","text")
         input1.value=this.info_user.name_user
         input1.setAttribute('data-key',`${Object.keys(this.info_user)[0]}`)
 
         const label2=document.createElement('label')
         label2.textContent='Email Address'
         const input2=document.createElement('input')
+        input2.setAttribute("type","email")
         input2.value=this.info_user.email_user
         input2.setAttribute('data-key',`${Object.keys(this.info_user)[1]}`)
 
         const label3=document.createElement('label')
         label3.textContent='Phone Number'
         const input3=document.createElement('input')
+        input3.setAttribute("type","tel")
         input3.value=this.info_user.phone_user
         input3.setAttribute('data-key',`${Object.keys(this.info_user)[2]}`)
 
@@ -251,6 +275,7 @@ class StageForm{
         buttonLabel.classList.add('switch')
         const inputLabel=document.createElement('input')
         inputLabel.setAttribute('type','checkbox')
+        inputLabel.setAttribute('data-key','')
         const spanLabel=document.createElement('span')
         spanLabel.classList.add('slider')
         spanLabel.classList.add('round')
@@ -279,6 +304,10 @@ function leftClick(){
     stageForm.backButtonFunction()
 }
 
+divContent.addEventListener('change',function(e){
+    console.log(e)
+    stageForm.changeListener(e.target)
+})
 const rightButton=document.querySelector('.--right-button')
 const leftButton=document.querySelector('.--left-button')
 rightButton.addEventListener('click',rightClick)
