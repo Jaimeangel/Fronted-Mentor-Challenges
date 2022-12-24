@@ -37,9 +37,9 @@ class StageForm{
                 }
             },
             type_plan:[
-                ['arcade',9,'icon-arcade.svg'],
-                ['advanced',12,'icon-advanced.svg'],
-                ['pro',15,'icon-pro.svg']
+                {tipo:'arcade',price:9,img:'icon-arcade.svg'},
+                {tipo:'advanced',price:12,img:'icon-advanced.svg'},
+                {tipo:'pro',price:15,img:'icon-pro.svg'}
             ]
         };
         this.info_user={
@@ -109,17 +109,17 @@ class StageForm{
         
     }
     nextButtonFunction(){
-        if(this.currentStep<4){
+        if(this.currentStep<this.stageButton.length){
             this.currentStep+=1
             this.activeButton()
         }else{
-            this.currentStep=5
+            this.currentStep=this.stageButton.length+1
             this.activeButton()
         }
 
     }
     backButtonFunction(){
-        if(this.currentStep<=4){
+        if(this.currentStep<=this.stageButton.length){
             this.currentStep-=1
             this.activeButton()
         }
@@ -183,14 +183,21 @@ class StageForm{
         label1.textContent='Name'
         const input1=document.createElement('input')
         input1.value=this.info_user.name_user
+        input1.setAttribute('data-key',`${Object.keys(this.info_user)[0]}`)
 
         const label2=document.createElement('label')
         label2.textContent='Email Address'
         const input2=document.createElement('input')
+        input2.value=this.info_user.email_user
+        input2.setAttribute('data-key',`${Object.keys(this.info_user)[1]}`)
 
         const label3=document.createElement('label')
         label3.textContent='Phone Number'
         const input3=document.createElement('input')
+        input3.value=this.info_user.phone_user
+        input3.setAttribute('data-key',`${Object.keys(this.info_user)[2]}`)
+
+    
         divForm.append(label1,input1,label2,input2,label3,input3)
 
 
@@ -217,12 +224,12 @@ class StageForm{
             divPlanContent.classList.add('stage2Card')
 
             const imgPlan=document.createElement('img')
-            imgPlan.setAttribute('src',`/assets/images/${plan[2]}`)
+            imgPlan.setAttribute('src',`/assets/images/${plan.img}`)
 
             const infoPlan=document.createElement('div')
             infoPlan.classList.add('stage2Card__info')
             const namePlan=document.createElement('p')
-            namePlan.textContent=`${plan[0].charAt(0).toUpperCase() + plan[0].slice(1)}`
+            namePlan.textContent=`${plan.tipo.charAt(0).toUpperCase() + plan.tipo.slice(1)}`
             const pricePlan=document.createElement('div')
             infoPlan.append(namePlan,pricePlan)
 
@@ -232,12 +239,14 @@ class StageForm{
 
         const divButon=document.createElement('div')
         divButon.classList.add('buttonPlan')
+        
         const pMonthly=document.createElement('p')
         const monthlyName=this.plan_type.periodo.mo.name
         pMonthly.textContent=`${monthlyName.charAt(0).toUpperCase() + monthlyName.slice(1)}`
         const pYearly=document.createElement('p')
         const yearlyName=this.plan_type.periodo.yr.name
         pYearly.textContent=`${yearlyName.charAt(0).toUpperCase() + yearlyName.slice(1)}`
+
         const buttonLabel=document.createElement('label')
         buttonLabel.classList.add('switch')
         const inputLabel=document.createElement('input')
@@ -245,11 +254,12 @@ class StageForm{
         const spanLabel=document.createElement('span')
         spanLabel.classList.add('slider')
         spanLabel.classList.add('round')
+
         buttonLabel.append(inputLabel,spanLabel)
         divButon.append(pMonthly,buttonLabel,pYearly)
-      
 
         divContent.append(divTitle,divPlan,divButon)
+
         document.querySelector('.stageContent__contenido').appendChild(divContent)
     }
 }
