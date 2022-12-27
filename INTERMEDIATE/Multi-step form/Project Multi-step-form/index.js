@@ -46,7 +46,7 @@ class StageForm{
             name_user:'',
             email_user:'',
             phone_user:'',
-            type_plan:'',
+            type_plan:false,
             info_plan:{
                 price:'',
                 name_plan:''
@@ -171,6 +171,50 @@ class StageForm{
                 break
         }
     }
+    changeUIButtonChangePlan(){
+        if(this.info_user.type_plan!==true){
+            const btnChangePlan=document.querySelector('.buttonPlan');
+            const pChildF= btnChangePlan.firstChild;
+            pChildF.classList.toggle('changeColor')
+            const pChildL=btnChangePlan.lastChild;
+            pChildL.classList.toggle('changeColor')
+        }else{
+            const btnChangePlan=document.querySelector('.buttonPlan');
+            const pChildF= btnChangePlan.firstChild;
+            pChildF.classList.toggle('changeColor')
+            const pChildL=btnChangePlan.lastChild;
+            pChildL.classList.toggle('changeColor')
+
+        }
+    }
+    changePriceTypePlan(){
+        const stageTypePlan=document.querySelectorAll('.stage2Card__info')
+        stageTypePlan.forEach(element=>{
+            const plan=this.plan_type.type_plan.find(plan=>plan.tipo===element.firstChild.textContent.toLowerCase());
+            const price=plan.price;
+            element.lastChild.innerHTML=''
+            if(this.info_user.type_plan){
+                const type_period=this.plan_type.periodo.yr.acronym;
+                const price_yearly=(price*12);
+                const p_price=document.createElement('p')
+                p_price.classList.add('pricePlan__p')
+                p_price.textContent=`$${price_yearly}/${type_period}`
+                element.lastChild.appendChild(p_price)
+            }else{
+                const type_period=this.plan_type.periodo.mo.acronym;
+                const price_monthly=price;
+                const p_price=document.createElement('p')
+                p_price.classList.add('pricePlan__p')
+                p_price.textContent=`$${price_monthly}/${type_period}`
+                element.lastChild.appendChild(p_price)
+            }
+        })
+    }
+    buttonChangePlan(tar){
+        this.info_user.type_plan=tar.checked;
+        this.changeUIButtonChangePlan();
+        this.changePriceTypePlan();
+    }
     changeListener(tar){
         switch(tar.dataset.key){
             case 'name_user':
@@ -181,6 +225,9 @@ class StageForm{
                 break
             case 'phone_user':
                 this.info_user.phone_user=tar.value
+                break
+            case 'btn-plan':
+                this.buttonChangePlan(tar)
                 break
         }
     }
@@ -255,6 +302,7 @@ class StageForm{
             const namePlan=document.createElement('p')
             namePlan.textContent=`${plan.tipo.charAt(0).toUpperCase() + plan.tipo.slice(1)}`
             const pricePlan=document.createElement('div')
+            pricePlan.classList.add('pricePlan')
             infoPlan.append(namePlan,pricePlan)
 
             divPlanContent.append(imgPlan,infoPlan)
@@ -265,17 +313,20 @@ class StageForm{
         divButon.classList.add('buttonPlan')
         
         const pMonthly=document.createElement('p')
-        const monthlyName=this.plan_type.periodo.mo.name
+        pMonthly.classList.add('buttonPlan__pPlan')
+        pMonthly.classList.add('changeColor')
+        const monthlyName=this.plan_type.periodo.mo.name;
         pMonthly.textContent=`${monthlyName.charAt(0).toUpperCase() + monthlyName.slice(1)}`
         const pYearly=document.createElement('p')
         const yearlyName=this.plan_type.periodo.yr.name
         pYearly.textContent=`${yearlyName.charAt(0).toUpperCase() + yearlyName.slice(1)}`
+        pYearly.classList.add('buttonPlan__pPlan')
 
         const buttonLabel=document.createElement('label')
         buttonLabel.classList.add('switch')
         const inputLabel=document.createElement('input')
         inputLabel.setAttribute('type','checkbox')
-        inputLabel.setAttribute('data-key','')
+        inputLabel.setAttribute('data-key','btn-plan')
         const spanLabel=document.createElement('span')
         spanLabel.classList.add('slider')
         spanLabel.classList.add('round')
@@ -286,6 +337,7 @@ class StageForm{
         divContent.append(divTitle,divPlan,divButon)
 
         document.querySelector('.stageContent__contenido').appendChild(divContent)
+        this.changePriceTypePlan()
     }
 }
 

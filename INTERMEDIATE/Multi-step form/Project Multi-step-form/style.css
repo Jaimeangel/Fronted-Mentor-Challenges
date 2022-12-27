@@ -258,8 +258,18 @@ body{
     padding: 0 1rem;
 }
 
-.buttonPlan p{
+.buttonPlan__pPlan{
     color: var(--Cool-gray);
     font-size: 13px;
+    font-weight: bold;
+}
+
+.changeColor{
+    color: var(--Marine-blue);
+}
+
+.pricePlan__p{
+    color: var(--Cool-gray);
+    font-size: 15px;
     font-weight: bold;
 }
