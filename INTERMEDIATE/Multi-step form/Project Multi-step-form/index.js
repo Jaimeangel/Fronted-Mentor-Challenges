@@ -297,6 +297,7 @@ class StageForm{
         label1.textContent='Name'
         const input1=document.createElement('input')
         input1.setAttribute("type","text")
+        input1.setAttribute('placeholder','e.g.Stephen King')
         input1.value=this.info_user.name_user
         input1.setAttribute('data-key',`${Object.keys(this.info_user)[0]}`)
 
@@ -304,6 +305,7 @@ class StageForm{
         label2.textContent='Email Address'
         const input2=document.createElement('input')
         input2.setAttribute("type","email")
+        input2.setAttribute('placeholder','e.g.stephenking@lorem.co')
         input2.value=this.info_user.email_user
         input2.setAttribute('data-key',`${Object.keys(this.info_user)[1]}`)
 
@@ -311,6 +313,7 @@ class StageForm{
         label3.textContent='Phone Number'
         const input3=document.createElement('input')
         input3.setAttribute("type","tel")
+        input3.setAttribute('placeholder','e.g.+ 1 234 567 890')
         input3.value=this.info_user.phone_user
         input3.setAttribute('data-key',`${Object.keys(this.info_user)[2]}`)
 
