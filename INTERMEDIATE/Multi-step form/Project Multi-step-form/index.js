@@ -37,9 +37,44 @@ class StageForm{
                 }
             },
             type_plan:[
-                {tipo:'arcade',price:9,img:'icon-arcade.svg',select:false},
-                {tipo:'advanced',price:12,img:'icon-advanced.svg',select:false},
-                {tipo:'pro',price:15,img:'icon-pro.svg',select:false}
+                {
+                    tipo:'arcade',
+                    price:9,
+                    img:'icon-arcade.svg',
+                    select:false
+                },
+                {
+                    tipo:'advanced',
+                    price:12,
+                    img:'icon-advanced.svg',
+                    select:false
+                },
+                {
+                    tipo:'pro',
+                    price:15,
+                    img:'icon-pro.svg',
+                    select:false
+                }
+            ],
+            extra_plan:[
+                {
+                    tipo:'Online service',
+                    description:'Access to multiplayer games',
+                    price:1,
+                    select:false
+                },
+                {
+                    tipo:'Larger storage',
+                    description:'Extra 1TB of cloud save',
+                    price:2,
+                    select:false
+                },
+                {
+                    tipo:'Customizable profile',
+                    description:'Custom theme on your profile',
+                    price:2,
+                    select:false
+                }
             ]
         };
         this.info_user={
@@ -47,13 +82,6 @@ class StageForm{
             email_user:'',
             phone_user:'',
             type_plan:false,
-            info_plan:{
-                price:'',
-                name_plan:''
-            },
-            extra_plan:{
-
-            }
         };
         this.nodoButtons=nodoButtons;
         this.nodoContent=nodoContent;
