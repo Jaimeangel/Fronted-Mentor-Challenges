@@ -273,3 +273,8 @@ body{
     font-size: 15px;
     font-weight: bold;
 }
+
+.choosePlan{
+    background-color: var(--Magnolia);
+    border-color: var(--Marine-blue);
+}

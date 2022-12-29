@@ -37,9 +37,9 @@ class StageForm{
                 }
             },
             type_plan:[
-                {tipo:'arcade',price:9,img:'icon-arcade.svg'},
-                {tipo:'advanced',price:12,img:'icon-advanced.svg'},
-                {tipo:'pro',price:15,img:'icon-pro.svg'}
+                {tipo:'arcade',price:9,img:'icon-arcade.svg',select:false},
+                {tipo:'advanced',price:12,img:'icon-advanced.svg',select:false},
+                {tipo:'pro',price:15,img:'icon-pro.svg',select:false}
             ]
         };
         this.info_user={
@@ -193,6 +193,7 @@ class StageForm{
             const plan=this.plan_type.type_plan.find(plan=>plan.tipo===element.firstChild.textContent.toLowerCase());
             const price=plan.price;
             element.lastChild.innerHTML=''
+
             if(this.info_user.type_plan){
                 const type_period=this.plan_type.periodo.yr.acronym;
                 const price_yearly=(price*12);
@@ -215,6 +216,21 @@ class StageForm{
         this.changeUIButtonChangePlan();
         this.changePriceTypePlan();
     }
+    choseTypePlan(tar){
+        const type_plan=tar.querySelector('.stage2Card__info').firstChild.textContent;
+        const plan_list=document.querySelectorAll('.stage2Card');
+        this.plan_type.type_plan.forEach((plan,index)=>{
+            if(plan.tipo===type_plan.toLowerCase()){
+                plan.select=true;
+                plan_list[index].classList.add('choosePlan')
+            }else{
+                if(plan.select!==false){
+                    plan.select=false;
+                    plan_list[index].classList.remove('choosePlan')
+                }
+            }
+        })
+    }
     changeListener(tar){
         switch(tar.dataset.key){
             case 'name_user':
@@ -229,9 +245,11 @@ class StageForm{
             case 'btn-plan':
                 this.buttonChangePlan(tar)
                 break
+            case 'plan_type':
+                this.choseTypePlan(tar)
+                break
         }
     }
-
     stage1(){
         const divContent=document.createElement('div')
         divContent.classList.add('stage')
@@ -293,6 +311,8 @@ class StageForm{
         this.plan_type.type_plan.map(plan=>{
             const divPlanContent=document.createElement('div')
             divPlanContent.classList.add('stage2Card')
+            if(plan.select===true)divPlanContent.classList.add('choosePlan')
+            divPlanContent.setAttribute('data-key','plan_type')
 
             const imgPlan=document.createElement('img')
             imgPlan.setAttribute('src',`/assets/images/${plan.img}`)
@@ -327,6 +347,7 @@ class StageForm{
         const inputLabel=document.createElement('input')
         inputLabel.setAttribute('type','checkbox')
         inputLabel.setAttribute('data-key','btn-plan')
+        if(this.info_user.type_plan===true)inputLabel.checked=true
         const spanLabel=document.createElement('span')
         spanLabel.classList.add('slider')
         spanLabel.classList.add('round')
@@ -357,7 +378,9 @@ function leftClick(){
 }
 
 divContent.addEventListener('change',function(e){
-    console.log(e)
+    stageForm.changeListener(e.target)
+})
+divContent.addEventListener('click',function(e){
     stageForm.changeListener(e.target)
 })
 const rightButton=document.querySelector('.--right-button')
