@@ -197,6 +197,9 @@ class StageForm{
             case 2:
                 this.stage2()
                 break
+            case 3:
+                this.stage3()
+                break
         }
     }
     changeUIButtonChangePlan(){
@@ -390,6 +393,49 @@ class StageForm{
 
         document.querySelector('.stageContent__contenido').appendChild(divContent)
         this.changePriceTypePlan()
+    }
+    stage3(){
+        const divContent=document.createElement('div')
+        divContent.classList.add('stage')
+
+        const divTitle=document.createElement('div')
+        divTitle.classList.add('title')
+        const h2=document.createElement('h2')
+        h2.textContent='Pick add-ons'
+        const p=document.createElement('p')
+        p.textContent='Add-ons help enhance your gaming experience.'
+        divTitle.append(h2,p) 
+
+        const divPlan=document.createElement('div')
+        divPlan.classList.add('stage')
+
+        this.plan_type.extra_plan.map(plan=>{
+            const divContenido=document.createElement('div')
+            divContenido.classList.add('extraPlan')
+
+            const divInput=document.createElement('input')
+            divInput.setAttribute('type','checkbox')
+
+            const divInfor=document.createElement('div')
+            divInfor.classList.add('infoPlan')
+
+            const p_title=document.createElement('p')
+            p_title.textContent=`${plan.tipo}`
+            const p_info=document.createElement('p')
+            p_info.textContent=`${plan.description}`
+
+            divInfor.append(p_title,p_info)
+
+            const divPrecio=document.createElement('p')
+            divPrecio.textContent=`+$${plan.price}/mo`
+            divPrecio.classList.add('precioPlan')
+
+            divContenido.append(divInput,divInfor,divPrecio)
+            divPlan.appendChild(divContenido)
+        });
+
+        divContent.append(divTitle,divPlan)
+        document.querySelector('.stageContent__contenido').appendChild(divContent)
     }
 }
 

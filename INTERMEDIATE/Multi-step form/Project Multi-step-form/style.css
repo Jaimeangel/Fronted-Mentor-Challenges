@@ -282,3 +282,41 @@ body{
     background-color: var(--Magnolia);
     border-color: var(--Marine-blue);
 }
+
+.extraPlan{
+    width: 100%;
+    min-height: 60px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border: 1px solid black;
+    border-radius: 10px;
+    padding:0.6rem;
+    margin-bottom: 1rem;
+}
+.extraPlan input{
+    width: 20px;
+    height: 20px;
+    margin-right: 0.5rem;
+}
+.infoPlan{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+.infoPlan p:first-child{
+    color: var(--Marine-blue);
+    font-size: 0.8rem;
+    font-weight: bold;
+    margin-bottom: 0.2rem;
+}
+.infoPlan p:last-child{
+    color: var(--Cool-gray);
+    font-size: 0.6rem;
+}
+.precioPlan{
+    margin-left: 0.3rem;
+    font-size: 0.5rem;
+    color: var(--Purplish-blue);
+}
+
