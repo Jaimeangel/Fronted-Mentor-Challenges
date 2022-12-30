@@ -413,8 +413,12 @@ class StageForm{
             const divContenido=document.createElement('div')
             divContenido.classList.add('extraPlan')
 
-            const divInput=document.createElement('input')
-            divInput.setAttribute('type','checkbox')
+
+            const divInput=document.createElement('div')
+            divInput.classList.add('inputPlan')
+            const inputCheckbox=document.createElement('input')
+            inputCheckbox.setAttribute('type','checkbox')
+            divInput.appendChild(inputCheckbox)
 
             const divInfor=document.createElement('div')
             divInfor.classList.add('infoPlan')
@@ -425,10 +429,21 @@ class StageForm{
             p_info.textContent=`${plan.description}`
 
             divInfor.append(p_title,p_info)
+            let precio
+            let tipo;
+            if(this.info_user.type_plan!==false){
+                precio=plan.price*12;
+                tipo=this.plan_type.periodo.yr.acronym;
+            }else{
+                precio=plan.price;
+                tipo=this.plan_type.periodo.mo.acronym;
+            }
 
-            const divPrecio=document.createElement('p')
-            divPrecio.textContent=`+$${plan.price}/mo`
+            const divPrecio=document.createElement('div')
             divPrecio.classList.add('precioPlan')
+            const p_precio=document.createElement('p')
+            p_precio.textContent=`+$${precio}/${tipo}`
+            divPrecio.appendChild(p_precio)
 
             divContenido.append(divInput,divInfor,divPrecio)
             divPlan.appendChild(divContenido)
