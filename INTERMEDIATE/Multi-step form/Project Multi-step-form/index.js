@@ -58,18 +58,21 @@ class StageForm{
             ],
             extra_plan:[
                 {
+                    id:1,
                     tipo:'Online service',
                     description:'Access to multiplayer games',
                     price:1,
                     select:false
                 },
                 {
+                    id:2,
                     tipo:'Larger storage',
                     description:'Extra 1TB of cloud save',
                     price:2,
                     select:false
                 },
                 {
+                    id:3,
                     tipo:'Customizable profile',
                     description:'Custom theme on your profile',
                     price:2,
@@ -262,6 +265,21 @@ class StageForm{
             }
         })
     }
+    chooseExtraPlan(tar){
+        const extraPlanElement=document.querySelectorAll('.extraPlan')
+        if(tar.checked){
+            const indexPlan=this.plan_type.extra_plan.findIndex(plan=>plan.id===parseInt(tar.dataset.key));
+            this.plan_type.extra_plan[indexPlan].select=true;
+            extraPlanElement[indexPlan].classList.add('choosePlan');
+        }else{
+            const indexPlan=this.plan_type.extra_plan.findIndex(plan=>plan.id===parseInt(tar.dataset.key));
+            if(this.plan_type.extra_plan[indexPlan].select===true){
+                this.plan_type.extra_plan[indexPlan].select=false;
+                extraPlanElement[indexPlan].classList.remove('choosePlan');
+            }
+        }
+
+    }
     changeListener(tar){
         switch(tar.dataset.key){
             case 'name_user':
@@ -278,6 +296,15 @@ class StageForm{
                 break
             case 'plan_type':
                 this.choseTypePlan(tar)
+                break
+            case '1':
+                this.chooseExtraPlan(tar)
+                break
+            case '2':
+                this.chooseExtraPlan(tar)
+                break
+            case '3':
+                this.chooseExtraPlan(tar)
                 break
         }
     }
@@ -413,11 +440,15 @@ class StageForm{
             const divContenido=document.createElement('div')
             divContenido.classList.add('extraPlan')
 
-
             const divInput=document.createElement('div')
             divInput.classList.add('inputPlan')
             const inputCheckbox=document.createElement('input')
             inputCheckbox.setAttribute('type','checkbox')
+            if(plan.select===true){
+                divContenido.classList.add('choosePlan');
+                inputCheckbox.checked=true;   
+            }
+            inputCheckbox.setAttribute('data-key',`${plan.id}`)
             divInput.appendChild(inputCheckbox)
 
             const divInfor=document.createElement('div')
@@ -429,7 +460,8 @@ class StageForm{
             p_info.textContent=`${plan.description}`
 
             divInfor.append(p_title,p_info)
-            let precio
+
+            let precio;
             let tipo;
             if(this.info_user.type_plan!==false){
                 precio=plan.price*12;
