@@ -203,6 +203,9 @@ class StageForm{
             case 3:
                 this.stage3()
                 break
+            case 4:
+                this.stage4()
+                break
         }
     }
     changeUIButtonChangePlan(){
@@ -480,6 +483,58 @@ class StageForm{
             divContenido.append(divInput,divInfor,divPrecio)
             divPlan.appendChild(divContenido)
         });
+
+        divContent.append(divTitle,divPlan)
+        document.querySelector('.stageContent__contenido').appendChild(divContent)
+    }
+    stage4(){
+        const divContent=document.createElement('div')
+        divContent.classList.add('stage')
+
+        const divTitle=document.createElement('div')
+        divTitle.classList.add('title')
+        const h2=document.createElement('h2')
+        h2.textContent='Finishing up'
+        const p=document.createElement('p')
+        p.textContent='Double-check everything looks OK before confirming.'
+        divTitle.append(h2,p) 
+
+        const divPlan=document.createElement('div')
+        divPlan.classList.add('stage')
+
+        const planUser=document.createElement('div')
+        planUser.classList.add('planUser')
+
+        let totalPay;
+        this.plan_type.type_plan
+            .filter(plan=>plan.select===true)
+            .forEach(plan=>{
+                let price=plan.price;
+                let type_period=this.plan_type.periodo.mo.name;
+                let acro_period=this.plan_type.periodo.mo.acronym;
+                if(this.info_user.type_plan!==false){
+                    price=plan.price*12;
+                    type_period=this.plan_type.periodo.yr.name;
+                    acro_period=this.plan_type.periodo.yr.acronym;
+                }
+                const divMainPlan=document.createElement('div')
+                divMainPlan.classList.add('mainPlay')
+
+                const divInfor=document.createElement('div')
+                const p1=document.createElement('p')
+                p1.textContent=`${plan.tipo}(${type_period})`
+                const p2=document.createElement('p')
+                p2.textContent=`Change`
+                divInfor.append(p1,p2)
+
+                const priceMainPlan=document.createElement('p')
+                priceMainPlan.textContent=`$${price}/${acro_period}`
+
+                divMainPlan.append(divInfor,priceMainPlan)
+                planUser.append(divMainPlan)
+            })
+
+        divPlan.append(planUser)
 
         divContent.append(divTitle,divPlan)
         document.querySelector('.stageContent__contenido').appendChild(divContent)
