@@ -1,5 +1,5 @@
-const divContent=document.querySelector(".main-block__contenido")
-const divButtons=document.querySelector(".main-block__button")
+const divContent=document.querySelector(".main-block__contenido");
+const divButtons=document.querySelector(".main-block__button");
 
 class StageForm{
     constructor({
@@ -29,11 +29,13 @@ class StageForm{
             periodo:{
                 mo:{
                     acronym:'mo',
-                    name:'monthly'
+                    name:'monthly',
+                    short_name:'month'
                 },
                 yr:{
                     acronym:'yr',
-                    name:'annually'
+                    name:'annually',
+                    short_name:'year'
                 }
             },
             type_plan:[
@@ -505,10 +507,11 @@ class StageForm{
         const planUser=document.createElement('div')
         planUser.classList.add('planUser')
 
-        let totalPay;
+        let totalPay=0;
         this.plan_type.type_plan
             .filter(plan=>plan.select===true)
             .forEach(plan=>{
+                totalPay+=plan.price;
                 let price=plan.price;
                 let type_period=this.plan_type.periodo.mo.name;
                 let acro_period=this.plan_type.periodo.mo.acronym;
@@ -518,13 +521,14 @@ class StageForm{
                     acro_period=this.plan_type.periodo.yr.acronym;
                 }
                 const divMainPlan=document.createElement('div')
-                divMainPlan.classList.add('mainPlay')
+                divMainPlan.classList.add('mainPay')
 
                 const divInfor=document.createElement('div')
                 const p1=document.createElement('p')
-                p1.textContent=`${plan.tipo}(${type_period})`
+                p1.textContent=`${plan.tipo.charAt(0).toUpperCase() + plan.tipo.slice(1)} (${type_period.charAt(0).toUpperCase() + type_period.slice(1)})`
                 const p2=document.createElement('p')
                 p2.textContent=`Change`
+                p2.classList.add('mainPay__info')
                 divInfor.append(p1,p2)
 
                 const priceMainPlan=document.createElement('p')
@@ -533,10 +537,52 @@ class StageForm{
                 divMainPlan.append(divInfor,priceMainPlan)
                 planUser.append(divMainPlan)
             })
+        this.plan_type.extra_plan
+            .filter(plan=>plan.select===true)
+            .forEach(plan=>{
+                totalPay+=plan.price;
+                let price=plan.price;
+                let acro_period=this.plan_type.periodo.mo.acronym;
+                if(this.info_user.type_plan!==false){
+                    price=plan.price*12;
+                    acro_period=this.plan_type.periodo.yr.acronym;
+                }
+                const divMainPlan=document.createElement('div')
+                divMainPlan.classList.add('extraPay')
 
+
+                const divInfor=document.createElement('p')
+                divInfor.classList.add('extraPay__p1')
+                divInfor.textContent=`${plan.tipo.charAt(0).toUpperCase() + plan.tipo.slice(1)}`
+
+                const priceMainPlan=document.createElement('p')
+                priceMainPlan.classList.add('extraPlan__p2')
+                priceMainPlan.textContent=`+$${price}/${acro_period}`
+
+                divMainPlan.append(divInfor,priceMainPlan)
+                planUser.append(divMainPlan)
+            })
         divPlan.append(planUser)
 
-        divContent.append(divTitle,divPlan)
+        const divtotalPay=document.createElement('div')
+        divtotalPay.classList.add('totalPay')
+        const p1=document.createElement('p')
+        p1.classList.add('totalPay__p1')
+        let type_period_pay=this.plan_type.periodo.mo.short_name;
+        let acro_period=this.plan_type.periodo.mo.acronym;
+        if(this.info_user.type_plan!==false){
+            type_period_pay=this.plan_type.periodo.yr.short_name;
+            acro_period=this.plan_type.periodo.yr.acronym;
+            totalPay*=12
+        }
+        p1.textContent=`Total (per ${type_period_pay})`
+        const p2=document.createElement('p')
+        p2.classList.add('totalPay__p2')
+        p2.textContent=`+$${totalPay}/${acro_period}`
+        divtotalPay.append(p1,p2)
+
+
+        divContent.append(divTitle,divPlan,divtotalPay)
         document.querySelector('.stageContent__contenido').appendChild(divContent)
     }
 }

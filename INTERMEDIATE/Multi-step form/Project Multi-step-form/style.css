@@ -337,3 +337,56 @@ body{
     background-color: var(--Magnolia);
     padding: 10px;
 }
+
+.mainPay{
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 1px solid var(--Light-gray);
+    padding-bottom: 0.3rem;
+    margin-bottom: 0.7rem;
+
+    color: var(--Marine-blue);
+    font-size: 15px;
+    font-weight: bold;
+}
+
+.mainPay__info{
+    color: var(--Cool-gray);
+    text-decoration: underline;
+}
+
+.extraPay{
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 0.8rem;
+}
+.extraPay__p1{
+    color: var(--Cool-gray);
+    font-size: 1rem;
+}
+.extraPlan__p2{
+    color: var(--Marine-blue);
+    font-size: 1rem;
+}
+
+.totalPay{
+    width: 100%;
+    padding: 1rem;
+    display: flex;
+    justify-content: space-between;
+}
+.totalPay__p1{
+    color: var(--Cool-gray);
+    font-size: 15px;
+    font-weight: bold;
+}
+
+.totalPay__p2{
+    color: var(--Purplish-blue);
+    font-size: 15px;
+    font-weight: bold;
+}
