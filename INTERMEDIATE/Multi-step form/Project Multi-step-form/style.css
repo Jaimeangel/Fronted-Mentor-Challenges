@@ -141,6 +141,9 @@ body{
     display: none;
 }
 
+.colorConfirm{
+    background-color: var(--Purplish-blue);
+}
 .stage{
     width: 100%;
     display: flex;

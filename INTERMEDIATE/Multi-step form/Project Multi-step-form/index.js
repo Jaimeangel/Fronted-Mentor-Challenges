@@ -87,6 +87,7 @@ class StageForm{
             email_user:'',
             phone_user:'',
             type_plan:false,
+            total_pay:0
         };
         this.nodoButtons=nodoButtons;
         this.nodoContent=nodoContent;
@@ -136,12 +137,20 @@ class StageForm{
         })
 
         const leftButton=document.querySelector('.--left-button')
+        const rightButton=document.querySelector('.--right-button')
         const buttonsDiv=document.querySelector('.stageContent__botones')
 
         if(this.currentStep!==1){
             leftButton.classList.add('show')
         }else{
             leftButton.classList.remove('show')
+        }
+        if(this.currentStep!==4){
+            rightButton.textContent=`Next Step`
+            rightButton.classList.remove('colorConfirm')
+        }else{
+            rightButton.textContent=`Confirm`
+            rightButton.classList.add('colorConfirm')
         }
         if(this.currentStep===5){
             buttonsDiv.classList.add('none')
@@ -182,7 +191,7 @@ class StageForm{
         
         const nextButton=document.createElement('button')
         nextButton.classList.add('--right-button')
-        nextButton.textContent='Next Step'
+        /* nextButton.textContent='Next Step' */
 
         botones.append(backButton,nextButton)
 
@@ -312,6 +321,11 @@ class StageForm{
                 this.chooseExtraPlan(tar)
                 break
         }
+    }
+    Stage4FunctionClickChangePlan(){
+        console.log('Click')
+        this.currentStep=2
+        this.activeButton()
     }
     stage1(){
         const divContent=document.createElement('div')
@@ -529,6 +543,7 @@ class StageForm{
                 const p2=document.createElement('p')
                 p2.textContent=`Change`
                 p2.classList.add('mainPay__info')
+                p2.onclick=()=>this.Stage4FunctionClickChangePlan()
                 divInfor.append(p1,p2)
 
                 const priceMainPlan=document.createElement('p')
@@ -575,6 +590,9 @@ class StageForm{
             acro_period=this.plan_type.periodo.yr.acronym;
             totalPay*=12
         }
+        //Aqui guardamos la informacion del precio de compra total
+        this.info_user.total_pay=totalPay
+
         p1.textContent=`Total (per ${type_period_pay})`
         const p2=document.createElement('p')
         p2.classList.add('totalPay__p2')
