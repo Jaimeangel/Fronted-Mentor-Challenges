@@ -93,11 +93,11 @@ class StageForm{
         this.nodoContent=nodoContent;
     }
     startStageForm(){
-        this.loadButtons()
-        this.loadStructureContent()
-        this.activeButton()
+        this.loadStepButtons()
+        this.LoadBasicStructureBoxContent()
+        this.ChangeColorStepButtons()
     }
-    loadButtons(){
+    loadStepButtons(){
         const divBotones=document.createElement('div')
         divBotones.classList.add('main-block__divBoton')
 
@@ -124,18 +124,7 @@ class StageForm{
         })
         this.nodoButtons.append(divBotones)
     }
-    activeButton(){
-        const botones=document.querySelectorAll('.buttonContent__button')
-        botones.forEach(boton=>{
-            if(parseInt(boton.textContent)===this.currentStep){
-                boton.classList.add('--active')
-            }else{
-                if(boton.classList.contains('--active')){
-                    boton.classList.remove('--active')
-                }
-            }
-        })
-
+    InteractionNextBackButtons(){
         const leftButton=document.querySelector('.--left-button')
         const rightButton=document.querySelector('.--right-button')
         const buttonsDiv=document.querySelector('.stageContent__botones')
@@ -155,35 +144,50 @@ class StageForm{
         if(this.currentStep===5){
             buttonsDiv.classList.add('none')
         }
-        this.contentStage()
+    }
+    ChangeColorStepButtons(){
+        const botones=document.querySelectorAll('.buttonContent__button')
+        botones.forEach(boton=>{
+            if(parseInt(boton.textContent)===this.currentStep){
+                boton.classList.add('--active')
+            }else{
+                if(boton.classList.contains('--active')){
+                    boton.classList.remove('--active')
+                }
+            }
+        })
+        this.InteractionNextBackButtons()
+        this.StageContent()
         
     }
     nextButtonFunction(){
         if(this.currentStep<this.stageButton.length){
             this.currentStep+=1
-            this.activeButton()
+            this.ChangeColorStepButtons()
         }else{
             this.currentStep=this.stageButton.length+1
-            this.activeButton()
+            this.ChangeColorStepButtons()
         }
 
     }
     backButtonFunction(){
         if(this.currentStep<=this.stageButton.length){
             this.currentStep-=1
-            this.activeButton()
+            this.ChangeColorStepButtons()
         }
 
     }
-    loadStructureContent(){
+    LoadBasicStructureBoxContent(){
         const divContent=document.createElement('div')
         divContent.classList.add('stageContent')
 
+        //Box that will containt content of each stage 
         const content=document.createElement('div')
         content.classList.add('stageContent__contenido')
-        content.onclick=(e)=>this.changeListener(e.target)
-        content.onchange=(e)=>this.changeListener(e.target)
+        content.onclick=(e)=>this.ListenerChanel(e.target)
+        content.onchange=(e)=>this.ListenerChanel(e.target)
 
+        //Buttons
         const botones=document.createElement('div')
         botones.classList.add('stageContent__botones')
 
@@ -201,33 +205,33 @@ class StageForm{
         divContent.append(content,botones)
         this.nodoContent.appendChild(divContent)
     }
-    clear(){
+    Clear(){
         const divContent=document.querySelector('.stageContent__contenido')
         divContent.innerHTML=''
     }
-    contentStage(){
-        this.clear()
+    StageContent(){
+        this.Clear()
         switch(this.currentStep){
             case 1:
-                this.stage1()
+                this.Stage1()
                 break
             case 2:
-                this.stage2()
+                this.Stage2()
                 break
             case 3:
-                this.stage3()
+                this.Stage3()
                 break
             case 4:
-                this.stage4()
+                this.Stage4()
                 break
             case 5:
-                this.stage5()
+                this.Stage5()
                 break
             default:
                 return
         }
     }
-    changeUIButtonChangePlan(){
+    Stage2ChangeButtonToggleText(){
         if(this.info_user.type_plan!==true){
             const btnChangePlan=document.querySelector('.buttonPlan');
             const pChildF= btnChangePlan.firstChild;
@@ -243,7 +247,7 @@ class StageForm{
 
         }
     }
-    changePriceTypePlan(){
+    Stage2ChangePriceTypePlan(){
         const stageTypePlan=document.querySelectorAll('.stage2Card__info')
         stageTypePlan.forEach(element=>{
             const plan=this.plan_type.type_plan.find(plan=>plan.tipo===element.firstChild.textContent.toLowerCase());
@@ -267,12 +271,12 @@ class StageForm{
             }
         })
     }
-    buttonChangePlan(tar){
+    Stage2ButtonToggleChangeTypePlan(tar){
         this.info_user.type_plan=tar.checked;
-        this.changeUIButtonChangePlan();
-        this.changePriceTypePlan();
+        this.Stage2ChangeButtonToggleText();
+        this.Stage2ChangePriceTypePlan();
     }
-    choseTypePlan(tar){
+    Stage2ChooseTypePlan(tar){
         const type_plan=tar.querySelector('.stage2Card__info').firstChild.textContent;
         const plan_list=document.querySelectorAll('.stage2Card');
         this.plan_type.type_plan.forEach((plan,index)=>{
@@ -287,7 +291,7 @@ class StageForm{
             }
         })
     }
-    chooseExtraPlan(tar){
+    Step3chooseExtraPlan(tar){
         const extraPlanElement=document.querySelectorAll('.extraPlan')
         if(tar.checked){
             const indexPlan=this.plan_type.extra_plan.findIndex(plan=>plan.id===parseInt(tar.dataset.key));
@@ -302,7 +306,7 @@ class StageForm{
         }
 
     }
-    changeListener(tar){
+    ListenerChanel(tar){
         switch(tar.dataset.key){
             case 'name_user':
                 this.info_user.name_user=tar.value
@@ -314,27 +318,27 @@ class StageForm{
                 this.info_user.phone_user=tar.value
                 break
             case 'btn-plan':
-                this.buttonChangePlan(tar)
+                this.Stage2ButtonToggleChangeTypePlan(tar)
                 break
             case 'plan_type':
-                this.choseTypePlan(tar)
+                this.Stage2ChooseTypePlan(tar)
                 break
             case '1':
-                this.chooseExtraPlan(tar)
+                this.Step3chooseExtraPlan(tar)
                 break
             case '2':
-                this.chooseExtraPlan(tar)
+                this.Step3chooseExtraPlan(tar)
                 break
             case '3':
-                this.chooseExtraPlan(tar)
+                this.Step3chooseExtraPlan(tar)
                 break
         }
     }
     Stage4FunctionClickChangePlan(){
         this.currentStep=2
-        this.activeButton()
+        this.ChangeColorStepButtons()
     }
-    stage1(){
+    Stage1(){
         const divContent=document.createElement('div')
         divContent.classList.add('stage')
 
@@ -380,7 +384,7 @@ class StageForm{
         divContent.append(divTitle,divForm)
         document.querySelector('.stageContent__contenido').appendChild(divContent)
     }
-    stage2(){
+    Stage2(){
         const divContent=document.createElement('div')
         divContent.classList.add('stage')
 
@@ -445,9 +449,9 @@ class StageForm{
         divContent.append(divTitle,divPlan,divButon)
 
         document.querySelector('.stageContent__contenido').appendChild(divContent)
-        this.changePriceTypePlan()
+        this.Stage2ChangePriceTypePlan()
     }
-    stage3(){
+    Stage3(){
         const divContent=document.createElement('div')
         divContent.classList.add('stage')
 
@@ -510,7 +514,7 @@ class StageForm{
         divContent.append(divTitle,divPlan)
         document.querySelector('.stageContent__contenido').appendChild(divContent)
     }
-    stage4(){
+    Stage4(){
         const divContent=document.createElement('div')
         divContent.classList.add('stage')
 
@@ -610,7 +614,7 @@ class StageForm{
         divContent.append(divTitle,divPlan,divtotalPay)
         document.querySelector('.stageContent__contenido').appendChild(divContent)
     }
-    stage5(){
+    Stage5(){
         const divContainer=document.createElement('div')
         divContainer.classList.add('stage5')
         const imgStage5=document.createElement('img');
