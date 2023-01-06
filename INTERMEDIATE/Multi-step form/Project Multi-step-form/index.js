@@ -227,8 +227,6 @@ class StageForm{
             case 5:
                 this.Stage5()
                 break
-            default:
-                return
         }
     }
     Stage2ChangeButtonToggleText(){
@@ -613,21 +611,6 @@ class StageForm{
 
         divContent.append(divTitle,divPlan,divtotalPay)
         document.querySelector('.stageContent__contenido').appendChild(divContent)
-    }
-    Stage5(){
-        const divContainer=document.createElement('div')
-        divContainer.classList.add('stage5')
-        const imgStage5=document.createElement('img');
-        imgStage5.setAttribute('src',`/assets/images/icon-thank-you.svg`)
-
-        const title=document.createElement('h1')
-        title.textContent=`Thank you!`
-
-        const info=document.createElement('p')
-        info.textContent=`Thanks for confirming your subscription ! We hope you have fun using our plataform. If you ever need support,please feel free to email us at support@loremgaming.com`
-
-        divContainer.append(imgStage5,title,info)
-        document.querySelector('.stageContent__contenido').appendChild(divContainer)
     }
 }
 
