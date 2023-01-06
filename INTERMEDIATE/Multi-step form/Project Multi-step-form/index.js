@@ -227,6 +227,8 @@ class StageForm{
             case 5:
                 this.Stage5()
                 break
+            default:
+                return
         }
     }
     Stage2ChangeButtonToggleText(){
@@ -330,6 +332,8 @@ class StageForm{
             case '3':
                 this.Step3chooseExtraPlan(tar)
                 break
+            default:
+                return
         }
     }
     Stage4FunctionClickChangePlan(){
