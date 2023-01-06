@@ -181,6 +181,8 @@ class StageForm{
 
         const content=document.createElement('div')
         content.classList.add('stageContent__contenido')
+        content.onclick=(e)=>this.changeListener(e.target)
+        content.onchange=(e)=>this.changeListener(e.target)
 
         const botones=document.createElement('div')
         botones.classList.add('stageContent__botones')
@@ -188,10 +190,11 @@ class StageForm{
         const backButton=document.createElement('button')
         backButton.textContent='Go Back'
         backButton.classList.add('--left-button')
+        backButton.onclick=()=>this.backButtonFunction()
         
         const nextButton=document.createElement('button')
         nextButton.classList.add('--right-button')
-        /* nextButton.textContent='Next Step' */
+        nextButton.onclick=()=>this.nextButtonFunction()
 
         botones.append(backButton,nextButton)
 
@@ -630,24 +633,5 @@ const stageForm = new StageForm({
 })
 
 stageForm.startStageForm()
-
-function rightClick(){
-    stageForm.nextButtonFunction()
-}
-
-function leftClick(){
-    stageForm.backButtonFunction()
-}
-
-divContent.addEventListener('change',function(e){
-    stageForm.changeListener(e.target)
-})
-divContent.addEventListener('click',function(e){
-    stageForm.changeListener(e.target)
-})
-const rightButton=document.querySelector('.--right-button')
-const leftButton=document.querySelector('.--left-button')
-rightButton.addEventListener('click',rightClick)
-leftButton.addEventListener('click',leftClick)
 
 
