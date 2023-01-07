@@ -1,6 +1,3 @@
-const divContent=document.querySelector(".main-block__contenido");
-const divButtons=document.querySelector(".main-block__button");
-
 class StageForm{
     constructor({
         nodoButtons,
@@ -95,7 +92,7 @@ class StageForm{
     startStageForm(){
         this.loadStepButtons()
         this.LoadBasicStructureBoxContent()
-        this.ChangeColorStepButtons()
+        this.CallingMainMethods()
     }
     loadStepButtons(){
         const divBotones=document.createElement('div')
@@ -143,7 +140,13 @@ class StageForm{
         }
         if(this.currentStep===5){
             buttonsDiv.classList.add('none')
+
         }
+    }
+    CallingMainMethods(){
+        this.ChangeColorStepButtons()
+        this.InteractionNextBackButtons()
+        this.StageContent()
     }
     ChangeColorStepButtons(){
         const botones=document.querySelectorAll('.buttonContent__button')
@@ -156,24 +159,22 @@ class StageForm{
                 }
             }
         })
-        this.InteractionNextBackButtons()
-        this.StageContent()
         
     }
     nextButtonFunction(){
         if(this.currentStep<this.stageButton.length){
             this.currentStep+=1
-            this.ChangeColorStepButtons()
+            this.CallingMainMethods()
         }else{
             this.currentStep=this.stageButton.length+1
-            this.ChangeColorStepButtons()
+            this.CallingMainMethods()
         }
 
     }
     backButtonFunction(){
         if(this.currentStep<=this.stageButton.length){
             this.currentStep-=1
-            this.ChangeColorStepButtons()
+            this.CallingMainMethods()
         }
 
     }
@@ -338,7 +339,7 @@ class StageForm{
     }
     Stage4FunctionClickChangePlan(){
         this.currentStep=2
-        this.ChangeColorStepButtons()
+        this.CallingMainMethods()
     }
     Stage1(){
         const divContent=document.createElement('div')
@@ -630,8 +631,15 @@ class StageForm{
 
         divContainer.append(imgStage5,title,info)
         document.querySelector('.stageContent__contenido').appendChild(divContainer)
+
+        //active color step buttons in number four
+        this.currentStep=4
+        this.ChangeColorStepButtons()
     }
 }
+
+const divContent=document.querySelector(".main-block__contenido");
+const divButtons=document.querySelector(".main-block__button");
 
 const stageForm = new StageForm({
     nodoButtons:divButtons,
