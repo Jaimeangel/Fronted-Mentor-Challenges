@@ -99,7 +99,7 @@ body{
     background-color: white;
     border-radius: 0.8em;
     padding: 1.5em;
-    padding-bottom: 1.3em;
+    padding-bottom: 2.3em;
     overflow: scroll;
 }
 .stageContent__botones{
@@ -305,14 +305,14 @@ body{
 
 .extraPlan{
     width: 100%;
-    min-height: 4.7rem;
+    min-height: 4.2rem;
     display: flex;
     justify-content: center;
     align-items: center;
     background-color: white;
     border: 1px solid var(--Light-gray);
     border-radius: 0.7em;
-    padding:0.5em 1em;
+    padding:0.5em 0.5em;
     margin-bottom: 1em;
 }
 
@@ -322,18 +322,20 @@ body{
 }
 .inputPlan{
     width: 12%;
+    display: flex;
+    justify-content: center;
 }
 
 .inputPlan input{
-    width: 1.4rem;
-    height: 1.4rem;
+    width: 1.2rem;
+    height: 1.2rem;
 }
 .infoPlan{
-    width: 66%;
+    width: 62%;
     display: flex;
     flex-direction: column;
     align-items: flex-start;
-    padding-left: 1rem;
+    padding-left: 0.5rem;
 }
 .infoPlan p:first-child{
     color: var(--Marine-blue);
@@ -346,7 +348,7 @@ body{
     font-size: 0.9rem;
 }
 .precioPlan{
-    width: 22%;
+    width: 26%;
     font-size: 1rem;
     font-weight: bold;
     color: var(--Purplish-blue);
@@ -356,9 +358,9 @@ body{
 .planUser{
     width: 100%;
     min-height: 100px;
-    border-radius: 0.625rem;
+    border-radius: 0.6rem;
     background-color: var(--Magnolia);
-    padding: 0.625rem;
+    padding: 0.6rem;
 }
 
 .mainPay{
@@ -366,9 +368,9 @@ body{
     display: flex;
     justify-content: space-between;
     align-items: center;
-    font-size: 0.9375rem;
+    font-size: 1rem;
     border-bottom: 1px solid var(--Light-gray);
-    padding-bottom: 0.3em;
+    padding-bottom: 0.5em;
     margin-bottom: 0.7em;
 
     color: var(--Marine-blue);
@@ -385,32 +387,30 @@ body{
     display: flex;
     justify-content: space-between;
     align-items: center;
-    margin-bottom: 0.8rem;
+    font-size: 1rem;
+    margin-bottom: 0.8em;
 }
 .extraPay__p1{
     color: var(--Cool-gray);
-    font-size: 1rem;
 }
 .extraPlan__p2{
     color: var(--Marine-blue);
-    font-size: 1rem;
 }
 
 .totalPay{
     width: 100%;
-    padding: 1rem;
+    font-size: 1rem;
+    padding: 1em;
     display: flex;
     justify-content: space-between;
 }
 .totalPay__p1{
     color: var(--Cool-gray);
-    font-size: 0.9375rem;
     font-weight: bold;
 }
 
 .totalPay__p2{
     color: var(--Purplish-blue);
-    font-size: 0.9375rem;
     font-weight: bold;
 }
 
@@ -419,13 +419,14 @@ body{
     display: flex;
     flex-direction: column;
     align-items: center;
-    margin-top: 2rem;
-    padding: 0.625rem;
+    font-size: 1rem;
+    margin-top: 2em;
+    padding: 0.7em;
 }
 .stage5 img{
-    width: 3.125rem;
-    height: 3.125rem;
-    margin-bottom: 0.5rem;
+    width: 4em;
+    height: 4em;
+    margin-bottom: 0.5em;
 }
 .stage5 h1{
     font-size: 1.5rem;
@@ -433,6 +434,7 @@ body{
     color: var(--Marine-blue);
 }
 .stage5 p{
+    font-size: 1.1rem;
     text-align: center;
     color: var(--Cool-gray);
 }
