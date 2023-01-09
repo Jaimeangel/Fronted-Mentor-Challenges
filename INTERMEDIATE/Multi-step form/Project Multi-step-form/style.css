@@ -22,6 +22,7 @@
 body{
     font-family: 'Ubuntu', sans-serif;
     background-color: var(--Light-blue);
+    font-size: 80%;
 }
 
 .main-block{
@@ -33,7 +34,7 @@ body{
 .main-block__button{
     position: relative;
     width: 100%;
-    height: 147px;
+    height: 9.2rem;
     background-image: url(/assets/images/bg-sidebar-mobile.svg);
     background-size: cover;
     background-repeat: no-repeat;
@@ -53,11 +54,12 @@ body{
     flex-direction: row;
 }
 .buttonContent__button{
-    width: 2rem;
-    height: 2rem;
-    border-radius: 20px;
-    margin: 0.5rem;
-    margin-top: 2rem;
+    font-size: 1.2rem;
+    width: 2em;
+    height: 2em;
+    border-radius: 1em;
+    margin: 0.5em;
+    margin-top: 1.5em;
     border: 1px solid var(--White);
     background-color: transparent;
     color: var(--White);
@@ -92,13 +94,13 @@ body{
 .stageContent__contenido{
     position: absolute;
     top: -4rem;
-    width: 85vw;
-    min-height: 65vh;
-    max-height: 85vh;
+    width: 85%;
+    max-height: 24rem;
     background-color: white;
-    border-radius: 10px;
-    padding: 15px;
-    padding-bottom: 20px;
+    border-radius: 0.8em;
+    padding: 1.5em;
+    padding-bottom: 1.3em;
+    overflow: scroll;
 }
 .stageContent__botones{
     width: 100%;
@@ -107,16 +109,16 @@ body{
     left: 0;
     bottom: 0;
     background-color: white;
-    padding: 0px 20px;
+    padding: 0px 1.5em;
     display: flex;
     justify-content: space-between;
     align-items: center;
 }
 
 .stageContent__botones button{
-    height: 40px;
-    padding: 0 15px;
-    border-radius: 5px;
+    font-size: 1rem;
+    padding: 0.9em;
+    border-radius: 0.6em;
     border: none;
     font-weight: bold;
 }
@@ -151,18 +153,21 @@ body{
     flex-direction: column;
     align-items: center;
     justify-content: center;
+    margin-top: 0.5em;
 }
 .title{
+    font-size: 1rem;
     width: 100%;
-    margin-bottom: 1rem;
+    margin-bottom: 0.3em;
 }
 .title h2{
-    margin-bottom: 10px;
+    font-size: 1.5rem;
+    margin-bottom: 0.1em;
     color: var(--Marine-blue);
 }
 .title p{
     color: var(--Cool-gray);
-    font-size: 16px;
+    font-size: 1.1rem;
 }
 .stage1__form{
     width: 100%;
@@ -170,15 +175,15 @@ body{
     flex-direction: column;
 }
 .stage1__form label{
-    margin: 4px 0px;
-    font-size: 0.9rem;
+    font-size: 1.1rem;
+    margin: 0.4em 0px;
     color: var(--Marine-blue);
 }
 .stage1__form input{
-    border-radius: 3px;
+    font-size: 1rem;
+    border-radius: 0.3em;
     border: 1px solid var(--Cool-gray);
-    height: 30px;
-    padding-left: 1rem;
+    padding: 0.6em 0 0.6em 1em;
     font-weight: bold;
 }
 
@@ -187,14 +192,26 @@ body{
     display: flex;
     justify-content: flex-start;
     border: 1px solid var(--Light-gray);
-    padding: 0.5rem;
-    margin-bottom: 0.5rem;
-    border-radius: 10px;
+    padding: 0.7em;
+    border-radius: 0.5em;
+    margin-bottom: 0.7em;
+}
+
+.stage2Card img{
+    min-width: 43px;
+    min-height: 43px;
+    width: 2.8em;
+    height: 2.8em;
 }
 .stage2Card__info{
     display: flex;
     flex-direction: column;
-    padding-left: 1rem;
+    padding-left: 1.2em;
+}
+.stage2Card__info >p{
+    font-size: 1.1rem;
+    padding: 0.1em;
+    font-weight: bold;
 }
 
 /* Estilos boton toggle */
@@ -257,18 +274,18 @@ body{
 
 .buttonPlan{
     width: 100%;
-    height: 2.5rem;
+    height: 3rem;
+    font-size: 1rem;
     display: flex;
     justify-content: space-around;
     align-items: center;
     background-color: var(--Alabaster);
-    border-radius: 10px;
-    padding: 0 1rem;
+    border-radius: 0.625em;
+    padding: 0 1em;
 }
 
 .buttonPlan__pPlan{
     color: var(--Cool-gray);
-    font-size: 13px;
     font-weight: bold;
 }
 
@@ -276,25 +293,27 @@ body{
     color: var(--Marine-blue);
 }
 
-.pricePlan__p{
+.pricePlan > p{
     color: var(--Cool-gray);
-    font-size: 15px;
+    font-size: 1rem;
+    padding: 0.1em;
     font-weight: bold;
 }
 
 
 
+
 .extraPlan{
     width: 100%;
-    min-height: 60px;
+    min-height: 4.7rem;
     display: flex;
     justify-content: center;
     align-items: center;
     background-color: white;
     border: 1px solid var(--Light-gray);
-    border-radius: 10px;
-    padding:0.4rem 1rem;
-    margin-bottom: 0.5rem;
+    border-radius: 0.7em;
+    padding:0.5em 1em;
+    margin-bottom: 1em;
 }
 
 .choosePlan{
@@ -306,40 +325,40 @@ body{
 }
 
 .inputPlan input{
-    width: 20px;
-    height: 20px;
+    width: 1.4rem;
+    height: 1.4rem;
 }
 .infoPlan{
     width: 66%;
     display: flex;
     flex-direction: column;
     align-items: flex-start;
-    margin-left: 0.5rem;
+    padding-left: 1rem;
 }
 .infoPlan p:first-child{
     color: var(--Marine-blue);
-    font-size: 0.8rem;
+    font-size: 1rem;
     font-weight: bold;
-    margin-bottom: 0.1rem;
+    margin-bottom: 0.1em;
 }
 .infoPlan p:last-child{
     color: var(--Cool-gray);
-    font-size: 0.7rem;
+    font-size: 0.9rem;
 }
 .precioPlan{
     width: 22%;
-    font-size: 0.8rem;
+    font-size: 1rem;
     font-weight: bold;
     color: var(--Purplish-blue);
-    margin-right: 0.2rem;
+    margin-right: 0.2em;
 }
 
 .planUser{
     width: 100%;
     min-height: 100px;
-    border-radius: 10px;
+    border-radius: 0.625rem;
     background-color: var(--Magnolia);
-    padding: 10px;
+    padding: 0.625rem;
 }
 
 .mainPay{
@@ -347,12 +366,12 @@ body{
     display: flex;
     justify-content: space-between;
     align-items: center;
+    font-size: 0.9375rem;
     border-bottom: 1px solid var(--Light-gray);
-    padding-bottom: 0.3rem;
-    margin-bottom: 0.7rem;
+    padding-bottom: 0.3em;
+    margin-bottom: 0.7em;
 
     color: var(--Marine-blue);
-    font-size: 15px;
     font-weight: bold;
 }
 
@@ -385,13 +404,13 @@ body{
 }
 .totalPay__p1{
     color: var(--Cool-gray);
-    font-size: 15px;
+    font-size: 0.9375rem;
     font-weight: bold;
 }
 
 .totalPay__p2{
     color: var(--Purplish-blue);
-    font-size: 15px;
+    font-size: 0.9375rem;
     font-weight: bold;
 }
 
@@ -401,21 +420,27 @@ body{
     flex-direction: column;
     align-items: center;
     margin-top: 2rem;
-    padding: 10px;
+    padding: 0.625rem;
 }
 .stage5 img{
-    width: 50px;
-    height: 50px;
+    width: 3.125rem;
+    height: 3.125rem;
     margin-bottom: 0.5rem;
 }
 .stage5 h1{
     font-size: 1.5rem;
-    margin-bottom: 0.5rem;
+    margin-bottom: 0.5em;
     color: var(--Marine-blue);
 }
 .stage5 p{
     text-align: center;
     color: var(--Cool-gray);
+}
+
+@media screen and (min-width:321px){
+    body{
+        font-size: 120%;
+    }
 }
 
 

@@ -233,18 +233,22 @@ class StageForm{
         }
     }
     Stage2ChangeButtonToggleText(){
+        console.log('toggle')
+        console.log(this.info_user.type_plan)
         if(this.info_user.type_plan!==true){
+            console.log('plan1')
             const btnChangePlan=document.querySelector('.buttonPlan');
             const pChildF= btnChangePlan.firstChild;
-            pChildF.classList.toggle('changeColor')
+            pChildF.classList.add('changeColor')
             const pChildL=btnChangePlan.lastChild;
-            pChildL.classList.toggle('changeColor')
+            pChildL.classList.remove('changeColor')
         }else{
+            console.log('plan2')
             const btnChangePlan=document.querySelector('.buttonPlan');
             const pChildF= btnChangePlan.firstChild;
-            pChildF.classList.toggle('changeColor')
+            pChildF.classList.remove('changeColor')
             const pChildL=btnChangePlan.lastChild;
-            pChildL.classList.toggle('changeColor')
+            pChildL.classList.add('changeColor')
 
         }
     }
@@ -350,7 +354,7 @@ class StageForm{
         const h2=document.createElement('h2')
         h2.textContent='Personal info'
         const p=document.createElement('p')
-        p.textContent='Please provide your name,email,address, and phone number'
+        p.textContent='Please provide your name, email, address, and phone number'
         divTitle.append(h2,p)
 
         const divForm=document.createElement('div')
