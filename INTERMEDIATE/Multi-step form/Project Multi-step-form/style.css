@@ -69,13 +69,22 @@ body{
 }
 
 .--active{
-    color: black;
+    color: var(--Marine-blue);
     background-color: var(--Light-blue);
     border: 1px solid var(--Light-blue);
 }
 
 .buttonContent__info{
     display: none;
+    letter-spacing: 2px;
+}
+
+.buttonContent__info p:first-child{
+    font-weight: 400;
+}
+
+.buttonContent__info p:last-child{
+    font-weight: 700;
 }
 
 .main-block__contenido{
@@ -484,7 +493,7 @@ body{
         background-color: var(--White);
         flex-direction: row;
         margin: 1rem;
-        max-width: 900px;
+        max-width: 850px;
         height: 85vh;
         margin: auto;
         padding: 1rem;
