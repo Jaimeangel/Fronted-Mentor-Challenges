@@ -95,7 +95,7 @@ body{
     position: absolute;
     top: -4rem;
     width: 85%;
-    max-height: 24rem;
+    max-height: 70vh;
     background-color: white;
     border-radius: 0.8em;
     padding: 1.5em;
@@ -437,11 +437,19 @@ body{
     font-size: 1.1rem;
     text-align: center;
     color: var(--Cool-gray);
+    line-height: 1.4rem;
 }
 
 @media screen and (min-width:321px){
     body{
         font-size: 120%;
+    }
+    .stageContent__contenido{
+        max-width: 400px;
+        /* max-height: 28rem; */
+    }
+    .main-block__divBoton{
+        max-width: 280px;
     }
 }
 
