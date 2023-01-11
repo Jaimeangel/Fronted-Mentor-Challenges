@@ -52,6 +52,7 @@ body{
 .buttonContent{
     display: flex;
     flex-direction: row;
+    align-items: center;
 }
 .buttonContent__button{
     font-size: 1.2rem;
@@ -452,5 +453,31 @@ body{
         max-width: 280px;
     }
 }
+
+@media screen and (min-width:821px){
+    body{
+        font-size: 160%;
+    }
+    .main-block{
+        background-color: var(--White);
+        flex-direction: row;
+        margin: 1rem;
+    }
+    .main-block__button{
+        width: 50%;
+        height: 85vh;
+    }
+    .main-block__divBoton{
+        width: 100%;
+        flex-direction: column;
+        justify-content: start;
+        align-items: flex-start;
+    }
+    .buttonContent__info{
+        display: flex;
+        flex-direction: column;
+        font-size: 1rem;
+    }
+} 
 
 
