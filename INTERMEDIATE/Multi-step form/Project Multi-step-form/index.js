@@ -405,6 +405,7 @@ class StageForm{
 
         const divPlan=document.createElement('div')
         divPlan.classList.add('stage')
+        divPlan.classList.add('rowCards')
 
         this.plan_type.type_plan.map(plan=>{
             const divPlanContent=document.createElement('div')
