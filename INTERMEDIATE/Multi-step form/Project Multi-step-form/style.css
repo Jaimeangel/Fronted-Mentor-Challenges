@@ -448,7 +448,7 @@ body{
     }
     .stageContent__contenido{
         max-width: 400px;
-        /* max-height: 28rem; */
+        overflow: hidden;
     }
     .main-block__divBoton{
         max-width: 280px;
@@ -500,6 +500,7 @@ body{
         max-width: 500px;
         padding: 0;
         padding-bottom: 0;
+        overflow: hidden;
     }
     .stageContent__botones{
         position: absolute;
