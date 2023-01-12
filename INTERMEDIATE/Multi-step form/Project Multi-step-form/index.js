@@ -37,18 +37,21 @@ class StageForm{
             },
             type_plan:[
                 {
+                    id:1,
                     tipo:'arcade',
                     price:9,
                     img:'icon-arcade.svg',
                     select:false
                 },
                 {
+                    id:2,
                     tipo:'advanced',
                     price:12,
                     img:'icon-advanced.svg',
                     select:false
                 },
                 {
+                    id:3,
                     tipo:'pro',
                     price:15,
                     img:'icon-pro.svg',
@@ -233,8 +236,6 @@ class StageForm{
         }
     }
     Stage2ChangeButtonToggleText(){
-        console.log('toggle')
-        console.log(this.info_user.type_plan)
         if(this.info_user.type_plan!==true){
             console.log('plan1')
             const btnChangePlan=document.querySelector('.buttonPlan');
@@ -263,6 +264,8 @@ class StageForm{
                 const type_period=this.plan_type.periodo.yr.acronym;
                 const price_yearly=(price*12);
                 const p_price=document.createElement('p')
+                p_price.setAttribute('data-key','plan_type')
+                p_price.setAttribute('data-plan',`${plan.id}`)
                 p_price.classList.add('pricePlan__p')
                 p_price.textContent=`$${price_yearly}/${type_period}`
                 element.lastChild.appendChild(p_price)
@@ -270,6 +273,8 @@ class StageForm{
                 const type_period=this.plan_type.periodo.mo.acronym;
                 const price_monthly=price;
                 const p_price=document.createElement('p')
+                p_price.setAttribute('data-key','plan_type')
+                p_price.setAttribute('data-plan',`${plan.id}`)
                 p_price.classList.add('pricePlan__p')
                 p_price.textContent=`$${price_monthly}/${type_period}`
                 element.lastChild.appendChild(p_price)
@@ -282,10 +287,10 @@ class StageForm{
         this.Stage2ChangePriceTypePlan();
     }
     Stage2ChooseTypePlan(tar){
-        const type_plan=tar.querySelector('.stage2Card__info').firstChild.textContent;
+        const type_plan=parseInt(tar.dataset.plan);
         const plan_list=document.querySelectorAll('.stage2Card');
         this.plan_type.type_plan.forEach((plan,index)=>{
-            if(plan.tipo===type_plan.toLowerCase()){
+            if(plan.id===type_plan){
                 plan.select=true;
                 plan_list[index].classList.add('choosePlan')
             }else{
@@ -365,24 +370,24 @@ class StageForm{
         const input1=document.createElement('input')
         input1.setAttribute("type","text")
         input1.setAttribute('placeholder','e.g.Stephen King')
-        input1.value=this.info_user.name_user
         input1.setAttribute('data-key',`${Object.keys(this.info_user)[0]}`)
+        input1.value=this.info_user.name_user
 
         const label2=document.createElement('label')
         label2.textContent='Email Address'
         const input2=document.createElement('input')
         input2.setAttribute("type","email")
         input2.setAttribute('placeholder','e.g.stephenking@lorem.co')
-        input2.value=this.info_user.email_user
         input2.setAttribute('data-key',`${Object.keys(this.info_user)[1]}`)
+        input2.value=this.info_user.email_user
 
         const label3=document.createElement('label')
         label3.textContent='Phone Number'
         const input3=document.createElement('input')
         input3.setAttribute("type","tel")
         input3.setAttribute('placeholder','e.g.+ 1 234 567 890')
-        input3.value=this.info_user.phone_user
         input3.setAttribute('data-key',`${Object.keys(this.info_user)[2]}`)
+        input3.value=this.info_user.phone_user
 
     
         divForm.append(label1,input1,label2,input2,label3,input3)
@@ -412,16 +417,28 @@ class StageForm{
             divPlanContent.classList.add('stage2Card')
             if(plan.select===true)divPlanContent.classList.add('choosePlan')
             divPlanContent.setAttribute('data-key','plan_type')
+            divPlanContent.setAttribute('data-plan',`${plan.id}`)
 
             const imgPlan=document.createElement('img')
             imgPlan.setAttribute('src',`/assets/images/${plan.img}`)
+            imgPlan.setAttribute('data-key','plan_type')
+            imgPlan.setAttribute('data-plan',`${plan.id}`)
 
             const infoPlan=document.createElement('div')
             infoPlan.classList.add('stage2Card__info')
+            infoPlan.setAttribute('data-key','plan_type')
+            infoPlan.setAttribute('data-plan',`${plan.id}`)
+
             const namePlan=document.createElement('p')
             namePlan.textContent=`${plan.tipo.charAt(0).toUpperCase() + plan.tipo.slice(1)}`
+            namePlan.setAttribute('data-plan',`${plan.id}`)
+            namePlan.setAttribute('data-key','plan_type')
+
             const pricePlan=document.createElement('div')
+            pricePlan.setAttribute('data-plan',`${plan.id}`)
+            pricePlan.setAttribute('data-key','plan_type')
             pricePlan.classList.add('pricePlan')
+
             infoPlan.append(namePlan,pricePlan)
 
             divPlanContent.append(imgPlan,infoPlan)
