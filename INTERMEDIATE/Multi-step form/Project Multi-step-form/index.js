@@ -237,14 +237,12 @@ class StageForm{
     }
     Stage2ChangeButtonToggleText(){
         if(this.info_user.type_plan!==true){
-            console.log('plan1')
             const btnChangePlan=document.querySelector('.buttonPlan');
             const pChildF= btnChangePlan.firstChild;
             pChildF.classList.add('changeColor')
             const pChildL=btnChangePlan.lastChild;
             pChildL.classList.remove('changeColor')
         }else{
-            console.log('plan2')
             const btnChangePlan=document.querySelector('.buttonPlan');
             const pChildF= btnChangePlan.firstChild;
             pChildF.classList.remove('changeColor')
@@ -256,9 +254,9 @@ class StageForm{
     Stage2ChangePriceTypePlan(){
         const stageTypePlan=document.querySelectorAll('.stage2Card__info')
         stageTypePlan.forEach(element=>{
-            const plan=this.plan_type.type_plan.find(plan=>plan.tipo===element.firstChild.textContent.toLowerCase());
+            const plan=this.plan_type.type_plan.find(plan=>plan.id===parseInt(element.dataset.plan));
             const price=plan.price;
-            element.lastChild.innerHTML=''
+            element.lastChild.innerHTML='';
 
             if(this.info_user.type_plan){
                 const type_period=this.plan_type.periodo.yr.acronym;
