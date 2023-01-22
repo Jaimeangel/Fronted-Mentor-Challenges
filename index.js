@@ -418,7 +418,7 @@ class StageForm{
             divPlanContent.setAttribute('data-plan',`${plan.id}`)
 
             const imgPlan=document.createElement('img')
-            imgPlan.setAttribute('src',`/assets/images/${plan.img}`)
+            imgPlan.setAttribute('src',`./assets/images/${plan.img}`)
             imgPlan.setAttribute('data-key','plan_type')
             imgPlan.setAttribute('data-plan',`${plan.id}`)
 
@@ -641,7 +641,7 @@ class StageForm{
         const divContainer=document.createElement('div')
         divContainer.classList.add('stage5')
         const imgStage5=document.createElement('img');
-        imgStage5.setAttribute('src',`/assets/images/icon-thank-you.svg`)
+        imgStage5.setAttribute('src',`./assets/images/icon-thank-you.svg`)
 
         const title=document.createElement('h1')
         title.textContent=`Thank you!`
